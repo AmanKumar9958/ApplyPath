@@ -11,7 +11,7 @@ import JobPage from './pages/JobPage.jsx'
 import PostJob from './pages/PostJob.jsx'
 import SavedJobs from './pages/SavedJobs.jsx'
 import MyJobs from './pages/MyJobs.jsx'
-import OnBoarding from './pages/OnBoarding.jsx'
+import OnBoarding from './pages/OnBoarding'
 
 const router = createBrowserRouter([
   {

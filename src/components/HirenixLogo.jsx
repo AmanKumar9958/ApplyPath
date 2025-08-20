@@ -36,7 +36,7 @@ const HirenixLogo = ({ className = "", color = "currentColor", accent = "current
         fontWeight="700"
         fill={color}
       >
-        ApplyPath
+        Hirenix
       </text>
       <text
         x="15"
