@@ -1,6 +1,7 @@
 import { useUser } from '@clerk/clerk-react';
 import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
+import { BarLoader } from 'react-spinners';
 
 const OnBoarding = () => {
     const { user, isLoaded } = useUser();

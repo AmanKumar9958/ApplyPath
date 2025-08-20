@@ -31,7 +31,7 @@ const LandingPage = () => {
     }
 
     return (
-        <main className="flex flex-col gap-10 sm:gap-20 py-10 sm:py-20 bg-black text-white">
+        <main className="flex flex-col gap-10 sm:gap-20 py-10 sm:py-20">
             {/* Hero Section */}
             <section className="text-center px-6">
                 <h1 className="text-5xl sm:text-7xl font-extrabold mb-4 tracking-tight relative inline-block">
