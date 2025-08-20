@@ -33,7 +33,7 @@ const Header = () => {
 
   return (
     <div>
-      <nav className="flex justify-between items-center px-3 overflow-visible">
+      <nav className="flex justify-between items-center px-8 overflow-visible border-b-2 border-gray-200 bg-white dark:bg-gray-900 dark:border-gray-700">
         <div>
           <Link to="/" className="inline-block w-fit">
             <HirenixLogo className="hirenix-logo" accent="yellow" />

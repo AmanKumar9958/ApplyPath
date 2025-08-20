@@ -27,7 +27,7 @@ const CustomUserMenu = () => {
         {/* Avatar button (instead of <UserButton />) */}
         <button
             onClick={() => setOpen(!open)}
-            className="w-10 h-10 rounded-full overflow-hidden border border-gray-300"
+            className="w-10 h-10 rounded-full overflow-hidden border border-yellow-400 hover:cursor-pointer"
         >
             <img
             src={user?.imageUrl}
@@ -68,7 +68,7 @@ const CustomUserMenu = () => {
                 signOut();
                 setOpen(false);
                 }}
-                className="w-full text-left flex items-center px-3 py-2 bg-red-500 text-white hover:bg-red-600"
+                className="w-full text-left flex items-center px-3 py-2 bg-red-500 text-white hover:bg-red-600 hover:cursor-pointer"
             >
                 <LogOut size={16} className="mr-2" />
                 Sign Out
