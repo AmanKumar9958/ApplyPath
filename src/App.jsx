@@ -6,12 +6,12 @@ import ProfilePage from './components/ProfilePage'
 import ProtectedRoutes from './components/ProtectedRoutes'
 import { ToastContainer } from 'react-toastify'
 import LandingPage from './pages/LandingPage.jsx'
-import Onboarding from './pages/Onboarding'
 import JobListing from './pages/JobListing.jsx'
 import JobPage from './pages/JobPage.jsx'
 import PostJob from './pages/PostJob.jsx'
 import SavedJobs from './pages/SavedJobs.jsx'
 import MyJobs from './pages/MyJobs.jsx'
+import OnBoarding from './pages/OnBoarding.jsx'
 
 const router = createBrowserRouter([
   {
@@ -25,7 +25,7 @@ const router = createBrowserRouter([
         path: '/onboarding',
         element: (
           <ProtectedRoutes>
-            <Onboarding />
+            <OnBoarding />
           </ProtectedRoutes>
         ),
       },
