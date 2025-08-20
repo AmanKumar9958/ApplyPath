@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
-import HirenixLogo from './HirenixLogo'
 import { SignedIn, SignedOut, SignIn, useUser } from '@clerk/clerk-react'
 import { Button } from './ui/button'
 import { PenBox } from 'lucide-react'
 import CustomUserMenu from './CustomUserMenu'
 import { ModeToggle } from './ModeToggle'
+import ApplyPathLogo from './ApplyPathLogo'
 
 const Header = () => {
 
@@ -36,7 +36,7 @@ const Header = () => {
       <nav className="flex justify-between items-center px-8 overflow-visible border-b-2 border-gray-200 bg-white dark:bg-gray-900 dark:border-gray-700">
         <div>
           <Link to="/" className="inline-block w-fit">
-            <HirenixLogo className="hirenix-logo" accent="yellow" />
+            <ApplyPathLogo className="apply-path-logo" />
           </Link>
         </div>
         <div className='flex items-center gap-5'>
