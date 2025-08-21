@@ -38,7 +38,7 @@ const CustomUserMenu = () => {
 
         {/* Custom Dropdown */}
         {open && (
-            <div className="absolute right-0 mt-2 w-48 bg-white text-black shadow-md rounded-md overflow-hidden">
+            <div className="absolute right-0 mt-2 w-48 bg-white text-black shadow-md rounded-md overflow-hidden z-50">
             <Link
                 to="/user-profile"
                 className="flex items-center px-3 py-2 hover:bg-gray-100"

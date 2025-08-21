@@ -30,40 +30,67 @@ const LandingPage = () => {
         <main className="flex flex-col gap-10 sm:gap-20 py-10 sm:py-20">
 
         {/* Hero Section */}
-        <section className="text-center px-6">
-            <h1 className={`text-5xl sm:text-7xl font-extrabold mb-4 tracking-tight relative inline-block transition-all duration-1000 ${showHero ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            Find Your{" "}
-            <span className="relative inline-block">
-                <span className="bg-gradient-to-r from-yellow-700 to-yellow-800 dark:from-yellow-400 dark:to-yellow-500 bg-clip-text text-transparent animate-pulse">
-                Dream Job
-                </span>
-                <svg
-                className="absolute left-0 -bottom-2 w-full h-4 animate-wiggle"
-                viewBox="0 0 100 20"
-                preserveAspectRatio="none"
-                >
-                <path
-                    d="M0,10 C20,20 40,0 60,10 C80,20 100,0 120,10"
-                    stroke="#FACC15"
-                    strokeWidth="3"
-                    fill="transparent"
-                />
-                </svg>
-            </span>
-            </h1>
+        <section className="flex justify-center items-center w-full px-6">
+            <div className="flex flex-col md:flex-row items-center justify-center gap-10 max-w-6xl w-full">
+                {/* Text */}
+                <div className="max-w-xl text-center md:text-left">
+                    <h1
+                        className={`text-5xl sm:text-7xl font-extrabold mb-4 tracking-tight relative inline-block transition-all duration-1000 ${
+                        showHero ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+                        }`}
+                    >
+                        Find Your{" "}
+                        <span className="relative inline-block">
+                        <span className="bg-gradient-to-r from-yellow-700 to-yellow-800 dark:from-yellow-400 dark:to-yellow-500 bg-clip-text text-transparent animate-pulse">
+                            Dream Job
+                        </span>
+                        <svg
+                            className="absolute left-0 -bottom-2 w-full h-4 animate-wiggle"
+                            viewBox="0 0 100 20"
+                            preserveAspectRatio="none"
+                        >
+                            <path
+                            d="M0,10 C20,20 40,0 60,10 C80,20 100,0 120,10"
+                            stroke="#FACC15"
+                            strokeWidth="3"
+                            fill="transparent"
+                            />
+                        </svg>
+                        </span>
+                    </h1>
 
-            <h1 className={`text-5xl sm:text-7xl font-extrabold mb-6 tracking-tight transition-all duration-1000 ${showHero ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            And Get <span className="text-yellow-500 animate-pulse">Hired</span>
-            </h1>
+                    <h1
+                        className={`text-5xl sm:text-7xl font-extrabold mb-6 tracking-tight transition-all duration-1000 ${
+                        showHero ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+                        }`}
+                    >
+                        And Get <span className="text-yellow-500 animate-pulse">Hired</span>
+                    </h1>
 
-            <p className={`text-lg sm:text-2xl mt-20 font-medium text-gray-900 dark:text-white transition-all duration-1000 ${showHero ? 'opacity-100' : 'opacity-0'}`}>
-            Explore the
-            <span className="relative inline-block mx-2">
-                <span className="font-bold text-yellow-500">thousands</span>
-            </span>
-            of job listings or find the perfect candidate
-            </p>
+                    <p
+                        className={`text-lg sm:text-2xl mt-10 font-medium text-gray-900 dark:text-white transition-all duration-1000 ${
+                        showHero ? 'opacity-100' : 'opacity-0'
+                        }`}
+                    >
+                        Explore the
+                        <span className="relative inline-block mx-2">
+                        <span className="font-bold text-yellow-500">thousands</span>
+                        </span>
+                        of job listings or find the perfect candidate
+                    </p>
+                </div>
+
+                {/* Image */}
+                <div className="flex justify-center">
+                    <img
+                        src="girl.png"
+                        alt="girl_image"
+                        className="rounded-3xl max-w-md w-full"
+                    />
+                </div>
+            </div>
         </section>
+
 
         {/* Buttons */}
         <div className="flex flex-wrap gap-5 justify-center items-center">
@@ -105,7 +132,7 @@ const LandingPage = () => {
                 className={`bg-white py-5 rounded-2xl dark:bg-gray-900 border border-gray-900 dark:border-yellow-400 hover:scale-105 hover:shadow-yellow-400/30 transition transform hover:-translate-y-2 duration-300 w-full max-w-md opacity-0 animate-fadeInUp delay-${idx * 200}`}
             >
                 <CardHeader>
-                <CardTitle className="text-yellow-500 text-xl">{item.title}</CardTitle>
+                    <CardTitle className="text-yellow-500 text-xl">{item.title}</CardTitle>
                 </CardHeader>
                 <CardContent className="dark:text-white">{item.text}</CardContent>
             </div>
