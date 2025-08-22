@@ -35,7 +35,15 @@ const Header = () => {
           <ApplyPathLogo className="apply-path-logo" />
         </Link>
 
-        {/* Desktop menu */}
+        {/* Navigation Links */}
+        <div className='hidden md:flex gap-4 text-gray-900 dark:text-white'>
+          <Link to="/jobs" className='hover:cursor-pointer font-bold transition-all duration-200 text-xl hover:text-yellow-500 dark:hover:text-yellow-400'>Jobs</Link>
+          <Link to="/saved-jobs" className='hover:cursor-pointer font-bold transition-all duration-200 text-xl hover:text-yellow-500 dark:hover:text-yellow-400'>Saved Jobs</Link>
+          {user && user?.unsafeMetadata?.role === 'recruiter' && (
+            <Link to="/my-jobs" className='hover:cursor-pointer font-bold transition-all duration-200 text-xl hover:text-yellow-500 dark:hover:text-yellow-400'>Manage Jobs</Link>
+          )}
+        </div>
+
         <div className="hidden md:flex items-center gap-5">
           <ModeToggle />
           <SignedOut>
@@ -66,27 +74,38 @@ const Header = () => {
       {/* Mobile menu dropdown */}
       {isMenuOpen && (
         <div className="md:hidden flex flex-col gap-4 px-6 py-4 border-b border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
-          <ModeToggle />
-          <SignedOut>
-            <Button onClick={() => {
-              setShowModal(true)
-              setIsMenuOpen(false)
-            }}>
-              Log In
-            </Button>
-          </SignedOut>
-          <SignedIn>
-            {user?.unsafeMetadata?.role === 'recruiter' && (
-              <Link to="/post-job" onClick={() => setIsMenuOpen(false)}>
-                <Button className="rounded-full bg-yellow-300 hover:bg-yellow-400 w-full">
-                  <PenBox size={20} className="mr-2" />
-                  Post a Job
-                </Button>
-              </Link>
+          <div className='flex gap-5'>
+            <ModeToggle />
+            <SignedOut>
+              <Button onClick={() => {
+                setShowModal(true)
+                setIsMenuOpen(false)
+              }}>
+                Log In
+              </Button>
+            </SignedOut>
+            <SignedIn>
+              {user?.unsafeMetadata?.role === 'recruiter' && (
+                <Link to="/post-job" onClick={() => setIsMenuOpen(false)}>
+                  <Button className="rounded-full bg-yellow-300 hover:bg-yellow-400 w-full">
+                    <PenBox size={20} className="mr-2" />
+                    Post a Job
+                  </Button>
+                </Link>
+              )}
+              <CustomUserMenu />
+            </SignedIn>
+          </div>
+          <div className='flex gap-5'>
+            <Link to="/jobs" className='hover:cursor-pointer font-bold transition-all duration-200 text-xl hover:text-yellow-500'>Jobs</Link>
+            <Link to="/saved-jobs" className='hover:cursor-pointer font-bold transition-all duration-200 text-xl hover:text-yellow-500'>Saved Jobs</Link>
+            {user && user?.unsafeMetadata?.role === 'recruiter' && (
+              <Link to="/my-jobs" className='hover:cursor-pointer font-bold transition-all duration-200 text-xl hover:text-yellow-500 dark:hover:text-yellow-400'>Manage Jobs</Link>
             )}
-            <CustomUserMenu />
-          </SignedIn>
+          </div>
         </div>
+        
+        
       )}
 
       {/* modal */}
