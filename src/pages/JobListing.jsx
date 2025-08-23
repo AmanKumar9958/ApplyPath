@@ -1,4 +1,5 @@
 import { getJobs } from '@/api/jobsapi';
+import JobCard from '@/components/JobCard';
 import useFetch from '@/hooks/useFetch';
 import { useUser } from '@clerk/clerk-react';
 import React, { useEffect, useState } from 'react';
@@ -12,7 +13,7 @@ const JobListing = () => {
   const [location, setLocation] = useState("");
   const [companyId, setCompanyId] = useState("");
 
-  const {fn: fetchJobs, data: dataJobs, loading: loadingJobs} = useFetch(getJobs, {});
+  const {fn: fetchJobs, data: jobsData, loading: loadingJobs} = useFetch(getJobs, {});
 
   useEffect(() => {
     if(isLoaded) {
@@ -31,14 +32,37 @@ const JobListing = () => {
   }
 
   return (
-    <div className="p-6 max-w-5xl mx-auto">
+    <div className="p-6 max-w-full mx-auto">
       {/* Heading */}
-      <h1 className="text-4xl font-extrabold mb-6 text-center bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-600 bg-clip-text text-transparent animate-pulse">
+      <h1 className="text-4xl font-extrabold mb-6 text-center bg-gradient-to-r from-yellow-300 via-yellow-400 to-yellow-500 bg-clip-text text-transparent animate-pulse">
         🚀 Latest Jobs
       </h1>
 
       {/* Search / Filters */}
-      
+
+      {/* Showing bar loader */}
+      {loadingJobs && (
+        <BarLoader className="mb-4" width={"100%"} color="#FACC15" />
+      )}
+
+      {/* Showing Jobs */}
+      {loadingJobs === false && (
+        <div>
+          {jobsData?.length ? (
+            <div>
+              {
+                jobsData.map((job) => {
+                  return <JobCard key={job.id} job={job} />;
+                })
+              }
+            </div>
+          ) : (
+            <div>No Jobs Found</div>
+          )}
+        </div>
+      )}
+
+
     </div>
   );
 };
