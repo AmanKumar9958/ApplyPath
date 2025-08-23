@@ -97,8 +97,12 @@ const Header = () => {
             </SignedIn>
           </div>
           <div className='flex gap-5'>
-            <Link to="/jobs" className='hover:cursor-pointer font-bold transition-all duration-200 text-xl hover:text-yellow-500'>Jobs</Link>
-            <Link to="/saved-jobs" className='hover:cursor-pointer font-bold transition-all duration-200 text-xl hover:text-yellow-500'>Saved Jobs</Link>
+            {user && user?.unsafeMetadata?.role === 'candidate' && (
+              <div className='flex gap-4'>
+                <Link to="/jobs" className='hover:cursor-pointer font-bold transition-all duration-200 text-xl hover:text-yellow-500'>Jobs</Link>
+                <Link to="/saved-jobs" className='hover:cursor-pointer font-bold transition-all duration-200 text-xl hover:text-yellow-500'>Saved Jobs</Link>
+              </div>
+            )}
             {user && user?.unsafeMetadata?.role === 'recruiter' && (
               <Link to="/my-jobs" className='hover:cursor-pointer font-bold transition-all duration-200 text-xl hover:text-yellow-500 dark:hover:text-yellow-400'>Manage Jobs</Link>
             )}
