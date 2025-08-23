@@ -3,8 +3,8 @@ import React from "react";
 const ApplyPathLogo = ({ className = "" }) => (
   <svg
     className={className}
-    width="200"
-    height="100"
+    width="170"
+    height="60"
     viewBox="0 0 500 100"
     xmlns="http://www.w3.org/2000/svg"
     role="img"

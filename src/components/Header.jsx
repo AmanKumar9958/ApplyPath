@@ -29,7 +29,7 @@ const Header = () => {
 
   return (
     <div>
-      <nav className="flex justify-between items-center px-6 py-3 border-b-2 border-gray-200 bg-white dark:bg-gray-900 dark:border-gray-700">
+      <nav className="flex justify-between items-center px-2 md:px-6 py-3 border-b-2 border-gray-200 bg-white dark:bg-gray-900 dark:border-gray-700">
         {/* Logo */}
         <Link to="/" className="inline-block w-fit">
           <ApplyPathLogo className="apply-path-logo" />
