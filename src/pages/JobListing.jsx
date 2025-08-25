@@ -49,12 +49,10 @@ const JobListing = () => {
       {loadingJobs === false && (
         <div>
           {jobsData?.length ? (
-            <div>
-              {
-                jobsData.map((job) => {
-                  return <JobCard key={job.id} job={job} />;
-                })
-              }
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"> 
+              {jobsData.map((job) => (
+                <JobCard key={job.id} job={job} />
+              ))}
             </div>
           ) : (
             <div>No Jobs Found</div>

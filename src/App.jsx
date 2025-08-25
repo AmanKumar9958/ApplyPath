@@ -12,6 +12,7 @@ import PostJob from './pages/PostJob.jsx'
 import SavedJobs from './pages/SavedJobs.jsx'
 import MyJobs from './pages/MyJobs.jsx'
 import OnBoarding from './pages/OnBoarding'
+import ScreenLoader from './components/ScreenLoader';
 
 const router = createBrowserRouter([
   {
@@ -84,6 +85,7 @@ const router = createBrowserRouter([
 function App() {
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+      <ScreenLoader delay={2000} />
       <ToastContainer />
       <RouterProvider router={router} />
     </ThemeProvider>
