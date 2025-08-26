@@ -1,9 +1,34 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from './ui/card'
 import { Heart, MapPin, MapPinIcon, Trash2Icon } from 'lucide-react'
 import { Link } from 'react-router-dom'
+import useFetch from '@/hooks/useFetch'
+import { savedJobs } from '@/api/savedJobsApi'
+import { useUser } from '@clerk/clerk-react'
+import { Button } from './ui/button'
 
-const JobCard = ({ job, isMyJob, savedInt, onSavedJob = () => {} }) => {
+const JobCard = ({ job, isMyJob = false, savedInt = false, onSavedJob = () => {} }) => {
+
+    const { user } = useUser();
+    const [saved, setSaved] = useState(savedInt);
+
+    const { fn: fnSavedJobs, data: savedJobsData, loading: loadingSavedJobs } = useFetch(savedJobs);
+
+    const handleSavedJob = async () => {
+        await fnSavedJobs({
+            alreadySaved: saved,
+            user_id: user.id,
+            job_id: job.id,
+        });
+        onSavedJob();
+    };
+
+    useEffect(() => {
+        if (savedJobsData !== undefined) {
+            setSaved(savedJobsData?.length > 0);
+        }
+    }, [savedJobsData]);
+
     return (
         <Card className={'w-full'}>
             <CardHeader>
@@ -33,7 +58,15 @@ const JobCard = ({ job, isMyJob, savedInt, onSavedJob = () => {} }) => {
                     <Link to={`/jobs/${job.id}`} className='bg-yellow-400 hover:bg-yellow-500 hover:cursor-pointer p-2 rounded-lg text-black font-bold'>
                         More Details
                     </Link>
-                    <Heart fill='red' size={25} stroke='red' />
+                    {!isMyJob && (
+                        <Button variant={'outline'} onClick={handleSavedJob} disabled={loadingSavedJobs}>
+                            {saved ? (
+                                <Heart fill='red' size={25} stroke='red' />
+                            ) : (
+                                <Heart size={25} />
+                            )}
+                        </Button>
+                    )}
                 </div>
             </CardFooter>
         </Card>

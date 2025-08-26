@@ -1,11 +1,7 @@
-import supabase, { setAuthToken } from "@/utils/supabase";
+import supabase from "@/utils/supabase";
 import { toast } from "react-toastify";
 
-export async function savedJobs(token, { alreadySaved }, savedData) {
-    setAuthToken(token);
-    const { job_id } = savedData;
-    const user_id = savedData.user_id;
-
+export async function savedJobs({ alreadySaved, job_id, user_id }) {
     if (alreadySaved) {
         const { data, error } = await supabase
             .from("saved_jobs")
