@@ -6,16 +6,15 @@ const Navbar = () => {
 
     const {openSignIn} = useClerk();
     const {user} = useUser();
-    console.log(user);
     return (
-        <nav className="bg-gray-800 text-white px-4 py-2 flex justify-between items-center">
+        <nav className="px-4 py-2 flex justify-between items-center border-b-2 border-b-black">
             <div>
                 <Link to="/" className='hover:cursor-pointer font-bold'>ApplyPath</Link>
             </div>
             <div>
                 {user ? (
                     <div className='flex gap-2 items-center'>
-                        <Link to='/applications' className='border-2 border-blue-500 p-1.5 rounded-2xl hover:bg-blue-500'>Applied Jobs</Link>
+                        <Link to='/applications' className='border-2 border-blue-500 p-1.5 rounded-2xl hover:bg-blue-500 hover:text-white'>Applied Jobs</Link>
                         <p>|</p>
                         <p>Hi, {user.fullName}</p>
                         <UserButton />

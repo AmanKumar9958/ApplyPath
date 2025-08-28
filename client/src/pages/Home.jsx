@@ -1,7 +1,14 @@
+import Hero from "../components/Hero"
+
 const Home = () => {
     return (
-        <div>
-            <h1 className="text-3xl font-bold">Welcome to home page</h1>
+        <div className="">
+            <div className="px-3 mt-2">
+                <Hero />
+            </div>
+            <div>
+                <h1>Latest Jobs 🚀</h1>
+            </div>
         </div>
     )
 }
