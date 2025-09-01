@@ -122,7 +122,7 @@ const Hero = () => {
                     {/* Heading */}
                     <div className="flex items-center gap-3 mb-6">
                         <span className="h-[2px] w-10 bg-gradient-to-r from-purple-500 to-indigo-600 rounded-full"></span>
-                        <p className="font-semibold text-gray-700 text-lg md:text-xl">Trusted By</p>
+                        <p className="font-semibold text-gray-700 dark:text-gray-200 text-lg md:text-xl">Trusted By</p>
                         <span className="h-[2px] w-10 bg-gradient-to-r from-indigo-600 to-purple-500 rounded-full"></span>
                     </div>
 
@@ -131,7 +131,7 @@ const Hero = () => {
                         {images.map((image, index) => (
                         <div
                             key={index}
-                            className="flex items-center justify-center bg-white rounded-xl shadow-sm hover:shadow-lg transition transform hover:scale-105 w-24 h-12 md:w-32 md:h-16"
+                            className="mb-2 flex items-center justify-center bg-white rounded-xl shadow-sm hover:shadow-lg transition transform hover:scale-105 w-24 h-12 md:w-32 md:h-16"
                         >
                             <LazyImage src={image.imageUrl} alt={image.alt} />
                         </div>

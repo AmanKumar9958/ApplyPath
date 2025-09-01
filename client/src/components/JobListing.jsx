@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react'
 import { AppContext } from '../context/AppContext'
 import JobCard from './JobCard'
 import { jobsData } from '../../public/images/assets'
+import { IoClose } from "react-icons/io5";
 
 const JobListing = () => {
     const JobCategories = [
@@ -42,32 +43,22 @@ const JobListing = () => {
             </div>
 
             {/* Sidebar */}
-            <aside className="w-full lg:w-[25%] lg:sticky lg:top-20 h-fit shadow-md rounded-xl p-4 mb-6 lg:mb-0 bg-white">
+            <aside className="w-full lg:w-[25%] lg:sticky lg:top-20 h-fit shadow-md dark:shadow-gray-700 rounded-xl p-4 mb-6 lg:mb-0">
                 {/* Current search filters */}
                 {isSearched && (searchFilter.title !== "" || searchFilter.location !== "") && (
                     <div className="shadow rounded-xl p-2 flex flex-col gap-2 mb-4">
                         <h3 className="font-bold text-lg">Current Search</h3>
                         <div className="flex items-center gap-3 flex-wrap">
                             {searchFilter.title && (
-                                <div className="flex justify-center items-center bg-sky-200 p-2 rounded-lg gap-2">
+                                <div className="flex justify-center items-center bg-sky-200 dark:bg-sky-700 p-2 rounded-lg gap-2">
                                     {searchFilter.title}
-                                    <img
-                                        onClick={() => { setSearchFilter(prev => ({ ...prev, title: "" })) }}
-                                        src='/images/cross_icon.svg'
-                                        alt='Cross Icon'
-                                        className='cursor-pointer'
-                                    />
+                                    <IoClose onClick={() => { setSearchFilter(prev => ({ ...prev, title: "" })) }} className="cursor-pointer" width={20} />
                                 </div>
                             )}
                             {searchFilter.location && (
-                                <div className="flex items-center justify-center bg-red-200 p-2 rounded-lg gap-2">
+                                <div className="flex items-center justify-center bg-red-200 dark:bg-red-700 p-2 rounded-lg gap-2">
                                     {searchFilter.location}
-                                    <img
-                                        onClick={() => { setSearchFilter(prev => ({ ...prev, location: "" })) }}
-                                        src="/images/cross_icon.svg"
-                                        alt="Cross Icon"
-                                        className='cursor-pointer'
-                                    />
+                                    <IoClose onClick={() => { setSearchFilter(prev => ({ ...prev, location: "" })) }} className="cursor-pointer" width={20} />
                                 </div>
                             )}
                         </div>

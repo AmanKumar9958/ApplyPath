@@ -2,6 +2,7 @@ import { useClerk, UserButton, useUser } from '@clerk/clerk-react';
 import React, { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { IoIosMenu, IoIosClose } from "react-icons/io";
+import ToggleIcon from './ToggleIcon';
 
 const Navbar = () => {
     const { openSignIn } = useClerk();
@@ -29,24 +30,31 @@ const Navbar = () => {
     }, [menuOpen]);
 
     return (
-        <nav className="px-6 py-3 flex justify-between items-center border-b border-gray-200 shadow-sm sticky top-0 bg-white z-50 min-h-[8vh]">
+        <nav className="px-6 py-3 flex justify-between items-center border-b border-gray-700 shadow-sm z-50 min-h-[8vh]">
             {/* Logo */}
             <div>
                 <Link to="/" className="hover:cursor-pointer text-xl font-extrabold">
-                    <span className="text-blue-600">Apply</span>
-                    <span className="text-gray-800">Path</span>
+                    <span className="text-blue-600 dark:text-blue-400">Apply</span>
+                    <span className="text-gray-800 dark:text-gray-200">Path</span>
                 </Link>
             </div>
 
             {/* Hamburger (Mobile only) */}
-            <button
-                type="button"
-                className="md:hidden p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
-                aria-label="Toggle menu"
-                onClick={() => setMenuOpen(!menuOpen)}
-            >
-                {menuOpen ? <IoIosClose size={28} /> : <IoIosMenu size={28} />}
-            </button>
+            <div className='flex items-center justify-center gap-3'>
+                <div className='sm:hidden md:hidden'>
+                    <ToggleIcon />
+                </div>
+                <div>
+                    <button
+                        type="button"
+                        className="md:hidden p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+                        aria-label="Toggle menu"
+                        onClick={() => setMenuOpen(!menuOpen)}
+                    >
+                        {menuOpen ? <IoIosClose size={28} /> : <IoIosMenu size={28} />}
+                    </button>
+                </div>
+            </div>
 
             {/* Desktop Menu */}
             <div className="hidden md:flex items-center gap-5">
@@ -59,8 +67,9 @@ const Navbar = () => {
                             Applied Jobs
                         </Link>
                         <span className="text-gray-400">|</span>
-                        <p className="text-gray-700 font-medium">Hi, {user.fullName}</p>
+                        <p className="text-gray-700 dark:text-gray-200 font-medium">Hi, {user.fullName}</p>
                         <UserButton afterSignOutUrl="/" />
+                        <ToggleIcon />  
                     </div>
                 ) : (
                     <div className="flex items-center gap-3">
@@ -78,11 +87,9 @@ const Navbar = () => {
             </div>
 
             {/* Mobile Menu */}
-            <div
-                ref={menuRef}
-                className={`md:hidden absolute left-0 right-0 top-16 bg-white border-t border-gray-200 shadow-md transform transition-transform duration-300 ${
-                    menuOpen ? "translate-y-0 opacity-100" : "-translate-y-5 opacity-0 pointer-events-none"
-                }`}
+            <div className={`bg-white dark:bg-gray-900 text-black dark:text-gray-200 md:hidden absolute left-0 right-0 top-16 bg-white border-t border-gray-200 shadow-md transform transition-transform duration-300 ${
+                menuOpen ? "translate-y-0 opacity-100" : "-translate-y-5 opacity-0 pointer-events-none"
+            }`}
             >
                 {user ? (
                     <div className="flex flex-col items-center gap-3 py-4">
@@ -93,7 +100,7 @@ const Navbar = () => {
                         >
                             Applied Jobs
                         </Link>
-                        <p className="text-gray-700 font-medium">Hi, {user.fullName}</p>
+                        <p className="font-medium text-black dark:text-gray-200">Hi, {user.fullName}</p>
                         <UserButton afterSignOutUrl="/" />
                     </div>
                 ) : (

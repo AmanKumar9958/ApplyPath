@@ -2,7 +2,7 @@ import React from 'react'
 
 const JobCard = ({ job }) => {
     return (
-        <div className="bg-white dark:bg-gray-900 shadow-lg border border-gray-200 dark:border-gray-700 rounded-2xl p-4 flex flex-col justify-between w-full transition-transform duration-200 hover:scale-[1.02]">
+        <div className="shadow-lg border border-gray-200 dark:border-gray-700 rounded-2xl p-4 flex flex-col justify-between w-full transition-transform duration-200 hover:scale-[1.02]">
             {/* Header */}
             <div className="flex items-center gap-4 mb-2">
                 <img
@@ -26,7 +26,7 @@ const JobCard = ({ job }) => {
             {/* Description */}
             <p
                 dangerouslySetInnerHTML={{ __html: job.description.slice(0, 150) }}
-                className="my-2 text-gray-700 dark:text-gray-300 text-sm"
+                className="my-2 text-sm"
             ></p>
 
             {/* Actions */}
