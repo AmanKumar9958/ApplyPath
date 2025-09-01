@@ -2,19 +2,41 @@ import React from 'react'
 
 const JobCard = ({ job }) => {
     return (
-        <div className='border-2 border-gray-500 p-2 rounded-2xl md:w-[35%]'>
-            <div>
-                <img src="/images/company_icon.svg" alt="Company Logo" />
+        <div className="bg-white dark:bg-gray-900 shadow-lg border border-gray-200 dark:border-gray-700 rounded-2xl p-4 flex flex-col justify-between w-full transition-transform duration-200 hover:scale-[1.02]">
+            {/* Header */}
+            <div className="flex items-center gap-4 mb-2">
+                <img
+                    src="/images/company_icon.svg"
+                    alt="Company Logo"
+                    className="w-14 h-14 object-contain rounded-full border border-gray-300 dark:border-gray-700"
+                />
+                <h4 className="font-bold text-lg text-gray-900 dark:text-white">{job.title}</h4>
             </div>
-            <h4 className='font-bold mt-1.5'>{job.title}</h4>
-            <div className='flex gap-3 my-2'>
-                <span className='bg-red-300 rounded-lg p-1.5'>{job.location}</span>
-                <span className='bg-sky-200 rounded-lg p-1.5'>{job.level}</span>
+
+            {/* Tags */}
+            <div className="flex flex-wrap gap-2 mb-2">
+                <span className="bg-red-100 text-red-700 dark:bg-red-300 dark:text-red-900 rounded-lg px-3 py-1 text-xs font-semibold">
+                    {job.location}
+                </span>
+                <span className="bg-sky-100 text-sky-700 dark:bg-sky-300 dark:text-sky-900 rounded-lg px-3 py-1 text-xs font-semibold">
+                    {job.level}
+                </span>
             </div>
-            <p dangerouslySetInnerHTML={{__html:job.description.slice(0, 150)}} className='my-2'></p>
-            <div className='flex gap-3'>
-                <button className='bg-red-300 p-1.5 rounded-xl hover:scale-110 transition-all duration-200 hover:cursor-pointer'>Apply Now</button>
-                <button className='bg-sky-200 p-1.5 rounded-xl hover:scale-110 transition-all duration-200 hover:cursor-pointer'>Learn More</button>
+
+            {/* Description */}
+            <p
+                dangerouslySetInnerHTML={{ __html: job.description.slice(0, 150) }}
+                className="my-2 text-gray-700 dark:text-gray-300 text-sm"
+            ></p>
+
+            {/* Actions */}
+            <div className="flex gap-3 mt-2">
+                <button className="bg-red-500 text-white px-4 py-2 rounded-xl font-semibold hover:bg-red-600 transition-all duration-200 hover:scale-105 hover:cursor-pointer">
+                    Apply Now
+                </button>
+                <button className="bg-sky-500 text-white px-4 py-2 rounded-xl font-semibold hover:bg-sky-600 transition-all duration-200 hover:scale-105 hover:cursor-pointer">
+                    Learn More
+                </button>
             </div>
         </div>
     )
