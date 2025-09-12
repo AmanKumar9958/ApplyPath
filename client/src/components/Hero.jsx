@@ -92,8 +92,8 @@ const Hero = () => {
 
                     {/* Search Bar */}
                     <div className="mt-8 flex flex-col md:flex-row w-full max-w-3xl bg-white rounded-xl overflow-hidden shadow-md">
-                        {/* Job Search */}
-                        <div>
+                        {/* Job Search - Bigger */}
+                        <div className="flex-1">
                             <input
                                 type="text"
                                 placeholder="Search for jobs"
@@ -101,8 +101,9 @@ const Hero = () => {
                                 ref={titleRef}
                             />
                         </div>
-                        {/* Location Search */}
-                        <div className="flex items-center border-2 border-gray-300 px-2 py-3 w-full">
+                        
+                        {/* Location Search - Smaller */}
+                        <div className="flex items-center border-2 border-gray-300 px-2 py-3 w-1/3 md:w-1/4">
                             <MdLocationOn className="text-gray-500 text-xl mr-2" />
                             <input
                                 type="text"
@@ -111,7 +112,12 @@ const Hero = () => {
                                 ref={locationRef}
                             />
                         </div>
-                        <button onClick={onSearch} className="bg-blue-600 hover:bg-blue-700 px-8 py-3 text-white font-semibold hover:cursor-pointer transition-all">
+                        
+                        {/* Button */}
+                        <button 
+                            onClick={onSearch} 
+                            className="bg-blue-600 hover:bg-blue-700 px-8 py-3 text-white font-semibold hover:cursor-pointer transition-all"
+                        >
                             Search
                         </button>
                     </div>

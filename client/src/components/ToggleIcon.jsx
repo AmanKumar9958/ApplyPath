@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import "@theme-toggles/react/css/Expand.css";
-import { Expand } from "@theme-toggles/react";
+import { DarkSide } from "@theme-toggles/react"
+import "@theme-toggles/react/css/DarkSide.css"
 import { motion, AnimatePresence } from "framer-motion";
+import { FaMoon, FaRegMoon, FaSun } from "react-icons/fa";
 
 const ToggleIcon = () => {
     const [isDark, setIsDark] = useState(false);
@@ -39,7 +40,10 @@ const ToggleIcon = () => {
 
     return(
         <div className="relative">
-            <Expand toggled={isDark} duration={750} onToggle={toggleTheme} />
+            {/* <DarkSide toggled={isDark} duration={750} onToggle={toggleTheme} /> */}
+            <div onClick={toggleTheme} className="cursor-pointer">
+                {isDark ? <FaSun size={19} /> : <FaRegMoon size={19} />}
+            </div>
             <AnimatePresence>
                 {animating && (
                 <motion.div

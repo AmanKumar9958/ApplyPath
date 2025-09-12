@@ -82,6 +82,7 @@ const Navbar = () => {
                         >
                             Login
                         </button>
+                        <ToggleIcon />
                     </div>
                 )}
             </div>

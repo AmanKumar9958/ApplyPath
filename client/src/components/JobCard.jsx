@@ -8,7 +8,7 @@ const JobCard = ({ job }) => {
                 <img
                     src="/images/company_icon.svg"
                     alt="Company Logo"
-                    className="w-14 h-14 object-contain rounded-full border border-gray-300 dark:border-gray-700"
+                    className="w-14 h-14 p-1 object-contain rounded-full border border-gray-300 dark:border-gray-700"
                 />
                 <h4 className="font-bold text-lg text-gray-900 dark:text-white">{job.title}</h4>
             </div>

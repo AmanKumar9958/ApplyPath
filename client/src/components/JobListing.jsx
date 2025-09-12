@@ -97,7 +97,7 @@ const JobListing = () => {
 
             {/* Job Listings */}
             <section className="py-4 w-full lg:w-[75%]">
-                <h3 className="font-bold text-xl mb-2">Latest Jobs 🚀</h3>
+                <h3 className="font-bold text-2xl mb-2 animate-pulse">Latest Jobs 🚀</h3>
                 <p className="mb-4">Get your desired job from top companies</p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     {jobsData.map((job, index) => (
