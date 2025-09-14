@@ -1,61 +1,79 @@
 import React, { useEffect, useState } from "react";
-import { DarkSide } from "@theme-toggles/react"
-import "@theme-toggles/react/css/DarkSide.css"
+import { DarkSide } from "@theme-toggles/react";
+import "@theme-toggles/react/css/DarkSide.css";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaMoon, FaRegMoon, FaSun } from "react-icons/fa";
+import { FaSun, FaRegMoon } from "react-icons/fa";
 
 const ToggleIcon = () => {
     const [isDark, setIsDark] = useState(false);
-    const [animating, setAnimating] = useState(false);
+    const [isAnimating, setIsAnimating] = useState(false);
 
     // On mount, read from localStorage or system preference
     useEffect(() => {
-        if (
-        localStorage.theme === "dark" ||
-        (!("theme" in localStorage) &&
-            window.matchMedia("(prefers-color-scheme: dark)").matches)
-        ) {
-        setIsDark(true);
-        } else {
-        setIsDark(false);
+        const userPrefersDark =
+            localStorage.theme === "dark" ||
+            (!("theme" in localStorage) &&
+                window.matchMedia("(prefers-color-scheme: dark)").matches);
+
+        setIsDark(userPrefersDark);
+
+        if (userPrefersDark) {
+            document.documentElement.classList.add("dark");
         }
     }, []);
 
     const toggleTheme = () => {
-        setAnimating(true);
-        
+        // Prevent multiple clicks while animating
+        if (isAnimating) return;
+
+        setIsAnimating(true);
+        const nextIsDark = !isDark;
+
+        // After the animation duration, update the theme and state
         setTimeout(() => {
-            if(isDark){
-                document.documentElement.classList.remove("dark");
-                localStorage.setItem("theme", "light");
-                setIsDark(false);
-            } else{
+            if (nextIsDark) {
                 document.documentElement.classList.add("dark");
                 localStorage.setItem("theme", "dark");
-                setIsDark(true);
+            } else {
+                document.documentElement.classList.remove("dark");
+                localStorage.setItem("theme", "light");
             }
-            setAnimating(false);
-        }, 600)
+            setIsDark(nextIsDark);
+            setIsAnimating(false);
+        }, 300); // A little longer than the animation duration
     };
 
-    return(
+    return (
         <div className="relative">
-            {/* <DarkSide toggled={isDark} duration={750} onToggle={toggleTheme} /> */}
+            {/* The actual toggle button */}
+            {/* <DarkSide
+                toggled={isDark}
+                duration={750}
+                onToggle={toggleTheme}
+                style={{ fontSize: '1.5rem' }} // Example: makes the toggle larger
+            /> */}
             <div onClick={toggleTheme} className="cursor-pointer">
                 {isDark ? <FaSun size={19} /> : <FaRegMoon size={19} />}
             </div>
+
+            {/* The full-screen animation overlay */}
             <AnimatePresence>
-                {animating && (
-                <motion.div
-                    initial={{ scale: 0, opacity: 0, x: "100%", y: "-100%" }}
-                    animate={{ scale: 4, opacity: 1, x: 0, y: 0 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.6, ease: "easeOut" }}
-                    className="fixed inset-0 z-[9999] bg-black dark:bg-white"
-                />
+                {isAnimating && (
+                    <motion.div
+                        initial={{ scale: 0 }}
+                        animate={{ scale: 100 }}
+                        exit={{ opacity: 0 }} // Optional: fade out
+                        transition={{ duration: 0.6, ease: "easeOut" }}
+                        // This div is the expanding circle.
+                        // It's positioned near the button, is circular, and starts small.
+                        className={`fixed top-5 right-5 h-8 w-8 rounded-full z-[9999]
+                           ${isDark ? 'bg-white' : 'bg-slate-900'}`
+                        }
+                    />
                 )}
             </AnimatePresence>
         </div>
-    ) ;
+    );
 };
+
 export default ToggleIcon;
