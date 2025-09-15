@@ -46,15 +46,12 @@ const ToggleIcon = () => {
     return (
         <div className="relative">
             {/* The actual toggle button */}
-            {/* <DarkSide
+            <DarkSide
                 toggled={isDark}
                 duration={750}
                 onToggle={toggleTheme}
-                style={{ fontSize: '1.5rem' }} // Example: makes the toggle larger
-            /> */}
-            <div onClick={toggleTheme} className="cursor-pointer">
-                {isDark ? <FaSun size={19} /> : <FaRegMoon size={19} />}
-            </div>
+                style={{ fontSize: '1.2rem' }} // Example: makes the toggle larger
+            />
 
             {/* The full-screen animation overlay */}
             <AnimatePresence>
@@ -67,7 +64,7 @@ const ToggleIcon = () => {
                         // This div is the expanding circle.
                         // It's positioned near the button, is circular, and starts small.
                         className={`fixed top-5 right-5 h-8 w-8 rounded-full z-[9999]
-                           ${isDark ? 'bg-white' : 'bg-slate-900'}`
+                            ${isDark ? 'bg-white' : 'bg-slate-900'}`
                         }
                     />
                 )}
