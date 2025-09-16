@@ -1,6 +1,6 @@
 import Hero from "../components/Hero"
 
-const Home = () => {
+const Jobs = () => {
     return (
         <div className="">
             <div className="px-3 my-2">
@@ -10,4 +10,4 @@ const Home = () => {
     )
 }
 
-export default Home
+export default Jobs

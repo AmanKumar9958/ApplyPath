@@ -66,6 +66,12 @@ const Navbar = () => {
                         >
                             Applied Jobs
                         </Link>
+                        <Link
+                            to="/all-jobs"
+                            className="px-4 py-1.5 border-2 border-blue-500 rounded-full text-sm font-medium hover:bg-blue-500 hover:text-white transition"
+                        >
+                            All Jobs
+                        </Link>
                         <span className="text-gray-400">|</span>
                         <p className="text-gray-700 dark:text-gray-200 font-medium">Hi, {user.fullName}</p>
                         <UserButton afterSignOutUrl="/" />
@@ -100,6 +106,13 @@ const Navbar = () => {
                             onClick={() => setMenuOpen(false)}
                         >
                             Applied Jobs
+                        </Link>
+                        <Link
+                            to="/all-jobs"
+                            className="px-4 py-1.5 border-2 border-blue-500 rounded-full text-sm font-medium hover:bg-blue-500 hover:text-white transition"
+                            onClick={() => setMenuOpen(false)}
+                        >
+                            All Jobs
                         </Link>
                         <p className="font-medium text-black dark:text-gray-200">Hi, {user.fullName}</p>
                         <UserButton afterSignOutUrl="/" />

@@ -1,3 +1,48 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* ========= Reveal Animation Utilities ========= */
+@keyframes fade-up {
+	0% { opacity: 0; transform: translateY(28px) scale(.98); }
+	60% { opacity: 1; transform: translateY(-2px) scale(1); }
+	100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes fade-in {
+	0% { opacity: 0; }
+	100% { opacity: 1; }
+}
+@keyframes scale-in {
+	0% { opacity:0; transform:scale(.92); }
+	100% { opacity:1; transform:scale(1); }
+}
+
+/* Base hidden state */
+.reveal { opacity: 0; will-change: transform, opacity; }
+.reveal[data-reveal] { opacity:0; }
+
+/* Activated */
+.reveal-show { animation: fade-up .85s cubic-bezier(.16,.84,.44,1) forwards; }
+.reveal-fade { animation: fade-in .9s ease forwards; }
+.reveal-scale { animation: scale-in .6s cubic-bezier(.16,.84,.44,1) forwards; }
+
+/* Delay helpers */
+[data-delay='100'] { animation-delay: .1s; }
+[data-delay='150'] { animation-delay: .15s; }
+[data-delay='200'] { animation-delay: .2s; }
+[data-delay='250'] { animation-delay: .25s; }
+[data-delay='300'] { animation-delay: .3s; }
+[data-delay='350'] { animation-delay: .35s; }
+[data-delay='400'] { animation-delay: .4s; }
+[data-delay='450'] { animation-delay: .45s; }
+[data-delay='500'] { animation-delay: .5s; }
+[data-delay='600'] { animation-delay: .6s; }
+[data-delay='700'] { animation-delay: .7s; }
+[data-delay='800'] { animation-delay: .8s; }
+[data-delay='900'] { animation-delay: .9s; }
+[data-delay='1000'] { animation-delay: 1s; }
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+	.reveal, .reveal-show, .reveal-fade, .reveal-scale { animation: none !important; opacity: 1 !important; transform: none !important; }
+}
