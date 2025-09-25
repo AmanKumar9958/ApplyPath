@@ -1,7 +1,6 @@
 import React, { useContext, useState } from 'react'
 import { AppContext } from '../context/AppContext'
 import JobCard from './JobCard'
-import { jobsData } from '../data/assets'
 import { IoClose } from "react-icons/io5";
 
 const JobListing = () => {
@@ -25,7 +24,7 @@ const JobListing = () => {
         "New York"
     ]
 
-    const { isSearched, searchFilter, setSearchFilter } = useContext(AppContext)
+    const { isSearched, searchFilter, setSearchFilter, jobs } = useContext(AppContext)
 
     // Sidebar toggle for mobile
     const [showFilters, setShowFilters] = useState(false)
@@ -98,7 +97,8 @@ const JobListing = () => {
                 <h3 className="font-bold text-2xl mb-2 animate-pulse">Latest Jobs 🚀</h3>
                 <p className="mb-4">Get your desired job from top companies</p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {jobsData.map((job, index) => (
+                    {/* Fetching jobs from context */}
+                    {jobs.map((job, index) => (
                         <JobCard key={index} job={job} />
                     ))}
                 </div>
