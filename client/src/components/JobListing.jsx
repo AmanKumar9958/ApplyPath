@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react'
 import { AppContext } from '../context/AppContext'
 import JobCard from './JobCard'
-import { jobsData } from '../../public/images/assets'
+import { jobsData } from '../data/assets'
 import { IoClose } from "react-icons/io5";
 
 const JobListing = () => {
@@ -43,7 +43,7 @@ const JobListing = () => {
             </div>
 
             {/* Sidebar */}
-            <aside className="w-full lg:w-[25%] lg:sticky lg:top-20 h-fit shadow-md dark:shadow-gray-700 rounded-xl p-4 mb-6 lg:mb-0">
+            <aside className="w-full lg:w-[25%] lg:sticky lg:top-20 h-fit shadow-md dark:shadow-gray-700 rounded-xl p-4 mb-6 lg:mb-2 md:mb-2">
                 {/* Current search filters */}
                 {isSearched && (searchFilter.title !== "" || searchFilter.location !== "") && (
                     <div className="shadow rounded-xl p-2 flex flex-col gap-2 mb-4">
@@ -64,35 +64,33 @@ const JobListing = () => {
                         </div>
                     </div>
                 )}
-                {/* Filters */}
-                {(showFilters || window.innerWidth >= 1024) && (
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-6">
-                        {/* Category Filter */}
-                        <div>
-                            <h4 className="font-semibold text-lg mb-2">Search By Categories</h4>
-                            <ul className="space-y-2">
-                                {JobCategories.map((category, index) => (
-                                    <li key={index} className="flex items-center">
-                                        <input type="checkbox" className="hover:cursor-pointer accent-sky-500" />
-                                        <span className="ml-2">{category}</span>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                        {/* Location Filter */}
-                        <div>
-                            <h4 className="font-semibold text-lg mb-2">Search By Location</h4>
-                            <ul className="space-y-2">
-                                {JobLocations.map((location, index) => (
-                                    <li key={index} className="flex items-center">
-                                        <input type="checkbox" className="hover:cursor-pointer accent-red-500" />
-                                        <span className="ml-2">{location}</span>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
+                {/* Filters: visible on desktop, toggled on mobile */}
+                <div className={`${showFilters ? 'grid' : 'hidden'} lg:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-6`}>
+                    {/* Category Filter */}
+                    <div>
+                        <h4 className="font-semibold text-lg mb-2">Search By Categories</h4>
+                        <ul className="space-y-2">
+                            {JobCategories.map((category, index) => (
+                                <li key={index} className="flex items-center">
+                                    <input type="checkbox" className="hover:cursor-pointer accent-sky-500" />
+                                    <span className="ml-2">{category}</span>
+                                </li>
+                            ))}
+                        </ul>
                     </div>
-                )}
+                    {/* Location Filter */}
+                    <div>
+                        <h4 className="font-semibold text-lg mb-2">Search By Location</h4>
+                        <ul className="space-y-2">
+                            {JobLocations.map((location, index) => (
+                                <li key={index} className="flex items-center">
+                                    <input type="checkbox" className="hover:cursor-pointer accent-red-500" />
+                                    <span className="ml-2">{location}</span>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                </div>
             </aside>
 
             {/* Job Listings */}

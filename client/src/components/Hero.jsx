@@ -65,12 +65,12 @@ const Hero = () => {
     }
 
     const images = [
-        { imageUrl: 'images/adobe_logo.png', alt: "Adobe Logo" },
-        { imageUrl: 'images/amazon_logo.png', alt: "Amazon Logo" },
-        { imageUrl: 'images/accenture_logo.png', alt: "Accenture Logo" },
-        { imageUrl: 'images/microsoft_logo.svg', alt: "Microsoft Logo" },
-        { imageUrl: 'images/samsung_logo.png', alt: "Samsung Logo" },
-        { imageUrl: 'images/walmart_logo.svg', alt: "Walmart Logo" }
+        { imageUrl: '/images/adobe_logo.png', alt: "Adobe Logo" },
+        { imageUrl: '/images/amazon_logo.png', alt: "Amazon Logo" },
+        { imageUrl: '/images/accenture_logo.png', alt: "Accenture Logo" },
+        { imageUrl: '/images/microsoft_logo.svg', alt: "Microsoft Logo" },
+        { imageUrl: '/images/samsung_logo.png', alt: "Samsung Logo" },
+        { imageUrl: '/images/walmart_logo.svg', alt: "Walmart Logo" }
     ]
 
     return (
@@ -124,7 +124,7 @@ const Hero = () => {
                 </div>
 
                 {/* trusted by section */}
-                <div className="flex flex-col items-center mt-12 px-4">
+                <div className="flex flex-col items-center mt-7 px-4">
                     {/* Heading */}
                     <div className="flex items-center gap-3 mb-6">
                         <span className="h-[2px] w-10 bg-gradient-to-r from-purple-500 to-indigo-600 rounded-full"></span>

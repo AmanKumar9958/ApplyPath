@@ -1,157 +1,123 @@
-import logo from "./logo.svg";
-import search_icon from "./search_icon.svg";
-import company_icon from "./company_icon.svg";
-import microsoft_logo from "./microsoft_logo.svg";
-import walmart_logo from "./walmart_logo.svg";
-import accenture_logo from "./accenture_logo.png";
-import profile_img from "./profile_img.png";
-import app_main_img from "./app_main_img.png";
-import cross_icon from './cross_icon.svg';
-import location_icon from './location_icon.svg';
-import money_icon from './money_icon.svg';
-import suitcase_icon from './suitcase_icon.svg';
-import person_icon from './person_icon.svg';
-import upload_area from './upload_area.svg';
-import resume_selected from './resume_selected.svg';
-import resume_not_selected from './resume_not_selected.svg';
-import play_store from './play_store.svg';
-import app_store from './app_store.svg';
-import back_arrow_icon from './back_arrow_icon.svg';
-import left_arrow_icon from './left_arrow_icon.svg';
-import right_arrow_icon from './right_arrow_icon.svg';
-import facebook_icon from './facebook_icon.svg'
-import instagram_icon from './instagram_icon.svg'
-import twitter_icon from './twitter_icon.svg'
-import home_icon from './home_icon.svg'
-import add_icon from './add_icon.svg'
-import profile_upload_icon from './profile_upload_icon.svg'
-import person_tick_icon from './person_tick_icon.svg'
-import resume_download_icon from './resume_download_icon.svg'
-import delete_icon from './delete_icon.svg'
-import email_icon from './email_icon.svg'
-import lock_icon from './lock_icon.svg'
-import samsung_logo from './samsung_logo.png'
-import adobe_logo from './adobe_logo.png'
-import amazon_logo from './amazon_logo.png'
+// Note: Files under public/ cannot be imported in JS.
+// Use URL paths (e.g., "/images/logo.svg") for public assets,
+// or move files under src/ to import them as modules.
 
 export const assets = {
-    logo,
-    search_icon,
-    cross_icon,
-    upload_area,
-    company_icon,
-    resume_not_selected,
-    resume_selected,
-    microsoft_logo,
-    walmart_logo,
-    accenture_logo,
-    app_main_img,
-    play_store,
-    app_store,
-    back_arrow_icon,
-    left_arrow_icon,
-    right_arrow_icon,
-    location_icon,
-    money_icon,
-    suitcase_icon,
-    person_icon,
-    facebook_icon,
-    instagram_icon,
-    twitter_icon,
-    home_icon,
-    add_icon,
-    person_tick_icon,
-    resume_download_icon,
-    profile_img,
-    delete_icon,
-    profile_upload_icon,
-    email_icon,
-    lock_icon,
-    samsung_logo,
-    adobe_logo,
-    amazon_logo
-}
+  logo: "/images/logo.svg",
+  search_icon: "/images/search_icon.svg",
+  company_icon: "/images/company_icon.svg",
+  microsoft_logo: "/images/microsoft_logo.svg",
+  walmart_logo: "/images/walmart_logo.svg",
+  accenture_logo: "/images/accenture_logo.png",
+  profile_img: "/images/profile_img.png",
+  app_main_img: "/images/app_main_img.png",
+  cross_icon: "/images/cross_icon.svg",
+  location_icon: "/images/location_icon.svg",
+  money_icon: "/images/money_icon.svg",
+  suitcase_icon: "/images/suitcase_icon.svg",
+  person_icon: "/images/person_icon.svg",
+  upload_area: "/images/upload_area.svg",
+  resume_selected: "/images/resume_selected.svg",
+  resume_not_selected: "/images/resume_not_selected.svg",
+  play_store: "/images/play_store.svg",
+  app_store: "/images/app_store.svg",
+  back_arrow_icon: "/images/back_arrow_icon.svg",
+  left_arrow_icon: "/images/left_arrow_icon.svg",
+  right_arrow_icon: "/images/right_arrow_icon.svg",
+  facebook_icon: "/images/facebook_icon.svg",
+  instagram_icon: "/images/instagram_icon.svg",
+  twitter_icon: "/images/twitter_icon.svg",
+  home_icon: "/images/home_icon.svg",
+  add_icon: "/images/add_icon.svg",
+  profile_upload_icon: "/images/profile_upload_icon.svg",
+  person_tick_icon: "/images/person_tick_icon.svg",
+  resume_download_icon: "/images/resume_download_icon.svg",
+  delete_icon: "/images/delete_icon.svg",
+  email_icon: "/images/email_icon.svg",
+  lock_icon: "/images/lock_icon.svg",
+  samsung_logo: "/images/samsung_logo.png",
+  adobe_logo: "/images/adobe_logo.png",
+  amazon_logo: "/images/amazon_logo.png",
+};
 
 export const JobCategories = [
-    "Programming",
-    "Data Science",
-    "Designing",
-    "Networking",
-    "Management",
-    "Marketing",
-    "Cybersecurity",
-]
-
-export const JobLocations = [
-    "Bangalore",
-    "Washington",
-    "Hyderabad",
-    "Mumbai",
-    "California",
-    "Chennai",
-    "New York"
-]
-
-// Sample data for Manage Jobs Page
-export const manageJobsData = [
-    { _id: 1, title: "Full Stack Developer", date: 1729102298497, location: "Bangalore", applicants: 20 },
-    { _id: 2, title: "Data Scientist", date: 1729102298497, location: "San Francisco", applicants: 15 },
-    { _id: 3, title: "Marketing Manager", date: 1729102298497, location: "London", applicants: 2 },
-    { _id: 4, title: "UI/UX Designer", date: 1729102298497, location: "Dubai", applicants: 25 }
+  "Programming",
+  "Data Science",
+  "Designing",
+  "Networking",
+  "Management",
+  "Marketing",
+  "Cybersecurity",
 ];
 
-// Sample data for Profile Page
+export const JobLocations = [
+  "Bangalore",
+  "Washington",
+  "Hyderabad",
+  "Mumbai",
+  "California",
+  "Chennai",
+  "New York",
+];
+
+export const manageJobsData = [
+  { _id: 1, title: "Full Stack Developer", date: 1729102298497, location: "Bangalore", applicants: 20 },
+  { _id: 2, title: "Data Scientist", date: 1729102298497, location: "San Francisco", applicants: 15 },
+  { _id: 3, title: "Marketing Manager", date: 1729102298497, location: "London", applicants: 2 },
+  { _id: 4, title: "UI/UX Designer", date: 1729102298497, location: "Dubai", applicants: 25 },
+];
+
 export const jobsApplied = [
-    {
-        company: 'Amazon',
-        title: 'Full Stack Developer',
-        location: 'Bangalore',
-        date: '22 Aug, 2024',
-        status: 'Pending',
-        logo: company_icon,
-    },
-    {
-        company: 'Meta',
-        title: 'Data Scientist',
-        location: 'San Francisco',
-        date: '22 Aug, 2024',
-        status: 'Rejected',
-        logo: company_icon,
-    },
-    {
-        company: 'Google',
-        title: 'Marketing Manager',
-        location: 'London',
-        date: '25 Sep, 2024',
-        status: 'Accepted',
-        logo: company_icon,
-    },
-    {
-        company: 'Qualcomm',
-        title: 'UI/UX Designer',
-        location: 'Dubai',
-        date: '15 Oct, 2024',
-        status: 'Pending',
-        logo: company_icon,
-    },
-    {
-        company: 'Microsoft',
-        title: 'Full Stack Developer',
-        location: 'Hyderabad',
-        date: '25 Sep, 2024',
-        status: 'Accepted',
-        logo: company_icon,
-    },
+  {
+    company: "Amazon",
+    title: "Full Stack Developer",
+    location: "Bangalore",
+    date: "22 Aug, 2024",
+    status: "Pending",
+    logo: assets.company_icon,
+  },
+  {
+    company: "Meta",
+    title: "Data Scientist",
+    location: "San Francisco",
+    date: "22 Aug, 2024",
+    status: "Rejected",
+    logo: assets.company_icon,
+  },
+  {
+    company: "Google",
+    title: "Marketing Manager",
+    location: "London",
+    date: "25 Sep, 2024",
+    status: "Accepted",
+    logo: assets.company_icon,
+  },
+  {
+    company: "Qualcomm",
+    title: "UI/UX Designer",
+    location: "Dubai",
+    date: "15 Oct, 2024",
+    status: "Pending",
+    logo: assets.company_icon,
+  },
+  {
+    company: "Microsoft",
+    title: "Full Stack Developer",
+    location: "Hyderabad",
+    date: "25 Sep, 2024",
+    status: "Accepted",
+    logo: assets.company_icon,
+  },
 ];
 
 export const viewApplicationsPageData = [
-    { _id: 1, name: "Richard Sanford", jobTitle: "Full Stack Developer", location: "Bangalore", imgSrc: profile_img },
-    { _id: 2, name: "Enrique Murphy", jobTitle: "Data Scientist", location: "San Francisco", imgSrc: profile_img },
-    { _id: 3, name: "Alison Powell", jobTitle: "Marketing Manager", location: "London", imgSrc: profile_img },
-    { _id: 4, name: "Richard Sanford", jobTitle: "UI/UX Designer", location: "Dubai", imgSrc: profile_img },
-    { _id: 5, name: "Enrique Murphy", jobTitle: "Full Stack Developer", location: "Hyderabad", imgSrc: profile_img },
-    { _id: 6, name: "Alison Powell", jobTitle: "Data Scientist", location: "New Delhi", imgSrc: profile_img },
-    { _id: 7, name: "Richard Sanford", jobTitle: "Marketing Manager", location: "Chennai", imgSrc: profile_img },
+  { _id: 1, name: "Richard Sanford", jobTitle: "Full Stack Developer", location: "Bangalore", imgSrc: assets.profile_img },
+  { _id: 2, name: "Enrique Murphy", jobTitle: "Data Scientist", location: "San Francisco", imgSrc: assets.profile_img },
+  { _id: 3, name: "Alison Powell", jobTitle: "Marketing Manager", location: "London", imgSrc: assets.profile_img },
+  { _id: 4, name: "Richard Sanford", jobTitle: "UI/UX Designer", location: "Dubai", imgSrc: assets.profile_img },
+  { _id: 5, name: "Enrique Murphy", jobTitle: "Full Stack Developer", location: "Hyderabad", imgSrc: assets.profile_img },
+  { _id: 6, name: "Alison Powell", jobTitle: "Data Scientist", location: "New Delhi", imgSrc: assets.profile_img },
+  { _id: 7, name: "Richard Sanford", jobTitle: "Marketing Manager", location: "Chennai", imgSrc: assets.profile_img },
 ];
 
 export const jobsData = [
@@ -164,7 +130,7 @@ export const jobsData = [
             "_id": "670e4d25ca9fda8f1bf359b9",
             "name": "Slack",
             "email": "slack@demo.com",
-            "image": company_icon,
+            "image": assets.company_icon,
         },
         description: `
         <p>We are seeking a highly skilled Full Stack Developer to join our dynamic and innovative team. The ideal candidate will have a passion for developing scalable web applications and working across the entire technology stack, including front-end and back-end development. You will have the opportunity to work with the latest technologies and contribute to exciting projects that impact our users directly.</p>
@@ -197,7 +163,7 @@ export const jobsData = [
             "_id": "670e4d25ca9fda8f1bf359b9",
             "name": "Slack",
             "email": "slack@demo.com",
-            "image": company_icon,
+            "image": assets.company_icon,
         },
         description: `
         <p>Join our analytics team to help drive business decisions using data. As a Data Scientist, you will leverage your analytical skills to uncover patterns and insights that will influence our strategic direction. You will work closely with stakeholders to understand their needs and deliver impactful analyses that support our growth objectives. Your role is critical in turning data into actionable insights.</p>
@@ -230,7 +196,7 @@ export const jobsData = [
             "_id": "670e4d25ca9fda8f1bf359b9",
             "name": "Slack",
             "email": "slack@demo.com",
-            "image": company_icon,
+            "image": assets.company_icon,
         },
         description: `
         <p>Create intuitive digital experiences as a UI/UX Designer. In this role, you will collaborate with product teams to design engaging user interfaces and ensure a seamless user journey. Your creativity and attention to detail will be crucial in developing designs that not only look good but also enhance functionality and user satisfaction.</p>
@@ -263,7 +229,7 @@ export const jobsData = [
             "_id": "670e4d25ca9fda8f1bf359b9",
             "name": "Slack",
             "email": "slack@demo.com",
-            "image": company_icon,
+            "image": assets.company_icon,
         },
         description: `
         <p>Enhance our deployment pipeline as a DevOps Engineer. This role will involve automating deployment processes, managing cloud infrastructure, and implementing best practices for security and performance. You will play a vital role in bridging the gap between development and operations, ensuring efficient workflows and high-quality releases.</p>
@@ -296,7 +262,7 @@ export const jobsData = [
             "_id": "670e4d25ca9fda8f1bf359b9",
             "name": "Slack",
             "email": "slack@demo.com",
-            "image": company_icon,
+            "image": assets.company_icon,
         },
         description: `
         <p>Join our team as a Software Engineer to build high-quality applications that deliver exceptional user experiences. You will be responsible for designing, developing, and maintaining software solutions that meet business needs. Collaborating closely with other engineers, you will contribute to code reviews and ensure best practices are followed throughout the development process.</p>
@@ -329,7 +295,7 @@ export const jobsData = [
             "_id": "670e4d25ca9fda8f1bf359b9",
             "name": "Slack",
             "email": "slack@demo.com",
-            "image": company_icon,
+            "image": assets.company_icon,
         },
         description: `
         <p>We are looking for a Network Engineer to manage our infrastructure and ensure robust connectivity across all systems. Your expertise will help us design and implement network solutions that are secure and efficient. You will be pivotal in monitoring network performance and ensuring compliance with security standards.</p>
@@ -362,7 +328,7 @@ export const jobsData = [
             "_id": "670e4d25ca9fda8f1bf359b9",
             "name": "Slack",
             "email": "slack@demo.com",
-            "image": company_icon,
+            "image": assets.company_icon,
         },
         description: `
         <p>Lead projects as a Project Manager ensuring timely delivery and alignment with organizational goals. You will oversee project planning, execution, and monitoring, collaborating with various teams to ensure that all aspects of each project are delivered successfully. Your strong leadership skills will be key to motivating team members and fostering a positive work environment.</p>
@@ -395,7 +361,7 @@ export const jobsData = [
             "_id": "670e4d25ca9fda8f1bf359b9",
             "name": "Slack",
             "email": "slack@demo.com",
-            "image": company_icon,
+            "image": assets.company_icon,
         },
         description: `
         <p>Join our team as a Mobile App Developer to create engaging mobile applications for iOS and Android platforms. You will be responsible for the full app development lifecycle, from concept and design to deployment and maintenance. Your creativity and technical skills will help us deliver high-quality applications that enhance user experience.</p>
@@ -428,7 +394,7 @@ export const jobsData = [
             "_id": "670e4d25ca9fda8f1bf359b9",
             "name": "Slack",
             "email": "slack@demo.com",
-            "image": company_icon,
+            "image": assets.company_icon,
         },
         description: `
         <p>Design cloud solutions as a Cloud Architect, helping to transform our infrastructure and services. You will work closely with various teams to understand their requirements and translate them into secure, scalable, and efficient cloud-based solutions. Your expertise will guide our cloud strategy and ensure that we leverage cloud technologies to their fullest potential.</p>
@@ -461,7 +427,7 @@ export const jobsData = [
             "_id": "670e4d25ca9fda8f1bf359b9",
             "name": "Slack",
             "email": "slack@demo.com",
-            "image": company_icon,
+            "image": assets.company_icon,
         },
         description: `
         <p>Join us as a Technical Writer to create user-friendly documentation that supports our products and services. You will work closely with engineers and product managers to gather information and produce clear, concise, and accurate documentation. Your role is essential in ensuring that our users can easily understand and utilize our offerings.</p>
@@ -494,7 +460,7 @@ export const jobsData = [
             "_id": "670e4d25ca9fda8f1bf359b9",
             "name": "Slack",
             "email": "slack@demo.com",
-            "image": company_icon,
+            "image": assets.company_icon,
         },
         description: `
         <p>Protect our systems as a Cybersecurity Analyst. In this role, you will monitor security systems, analyze potential threats, and implement protective measures to safeguard our information and assets. Your expertise will help us stay ahead of evolving security challenges and maintain a secure environment for our users and stakeholders.</p>
@@ -527,7 +493,7 @@ export const jobsData = [
             "_id": "670e4d25ca9fda8f1bf359b9",
             "name": "Slack",
             "email": "slack@demo.com",
-            "image": company_icon,
+            "image": assets.company_icon,
         },
         description: `
         <p>Join us as a Business Analyst to optimize our processes and improve overall efficiency. You will work closely with stakeholders to identify business needs and gather requirements for new projects. Your analytical skills will help drive decision-making and ensure that solutions align with business objectives.</p>
@@ -560,7 +526,7 @@ export const jobsData = [
             "_id": "670e4d25ca9fda8f1bf359b9",
             "name": "Slack",
             "email": "slack@demo.com",
-            "image": company_icon,
+            "image": assets.company_icon,
         },
         description: `
         <p>Support our marketing efforts as a Marketing Specialist. In this role, you will assist with campaign execution, content creation, and social media management. Your creativity and enthusiasm will help promote our brand and engage our audience across various channels.</p>
@@ -593,7 +559,7 @@ export const jobsData = [
             "_id": "670e4d25ca9fda8f1bf359b9",
             "name": "Slack",
             "email": "slack@demo.com",
-            "image": company_icon,
+            "image": assets.company_icon,
         },
         description: `
         <p>Join our innovative team as a Data Scientist, where you will analyze complex data sets to drive strategic decision-making. You will leverage your statistical and programming skills to uncover insights and develop predictive models, contributing to the overall success of our organization.</p>
@@ -626,7 +592,7 @@ export const jobsData = [
             "_id": "670e4d25ca9fda8f1bf359b9",
             "name": "Slack",
             "email": "slack@demo.com",
-            "image": company_icon,
+            "image": assets.company_icon,
         },
         description: `
         <p>We are seeking a talented UX/UI Designer to enhance our user experience across digital platforms. You will collaborate with product managers and developers to create intuitive and engaging interfaces that meet user needs and improve overall satisfaction.</p>
@@ -659,7 +625,7 @@ export const jobsData = [
             "_id": "670e4d25ca9fda8f1bf359b9",
             "name": "Slack",
             "email": "slack@demo.com",
-            "image": company_icon,
+            "image": assets.company_icon,
         },
         description: `
         <p>As a DevOps Engineer, you will play a crucial role in enhancing our software development and deployment processes. You will work with development and operations teams to automate workflows, improve system reliability, and ensure seamless integration and delivery of applications.</p>
@@ -692,7 +658,7 @@ export const jobsData = [
             "_id": "670e4d25ca9fda8f1bf359b9",
             "name": "Slack",
             "email": "slack@demo.com",
-            "image": company_icon,
+            "image": assets.company_icon,
         },
         description: `
         <p>Join our team as a Sales Manager, where you will lead our sales efforts to drive growth and increase market share. You will develop sales strategies, manage client relationships, and mentor your sales team to achieve performance goals.</p>
@@ -725,7 +691,7 @@ export const jobsData = [
             "_id": "670e4d25ca9fda8f1bf359b9",
             "name": "Slack",
             "email": "slack@demo.com",
-            "image": company_icon,
+            "image": assets.company_icon,
         },
         description: `
         <p>As a Human Resources Specialist, you will support various HR functions, including recruitment, employee relations, and compliance. You will play a vital role in fostering a positive workplace culture and ensuring that our HR practices align with organizational goals.</p>
@@ -758,7 +724,7 @@ export const jobsData = [
             "_id": "670e4d25ca9fda8f1bf359b9",
             "name": "Slack",
             "email": "slack@demo.com",
-            "image": company_icon,
+            "image": assets.company_icon,
         },
         description: `
         <p>We are looking for a Content Marketing Manager to lead our content strategy and execution. In this role, you will develop compelling content that engages our audience and drives brand awareness. You will collaborate with various teams to ensure consistent messaging across all platforms.</p>
@@ -791,7 +757,7 @@ export const jobsData = [
             "_id": "670e4d25ca9fda8f1bf359b9",
             "name": "Slack",
             "email": "slack@demo.com",
-            "image": company_icon,
+            "image": assets.company_icon,
         },
         description: `
         <p>Join our creative team as a Graphic Designer, where you will be responsible for creating visually appealing graphics and layouts that enhance our brand identity. You will collaborate with marketing and product teams to develop creative solutions for various projects.</p>
@@ -824,7 +790,7 @@ export const jobsData = [
             "_id": "670e4d25ca9fda8f1bf359b9",
             "name": "Slack",
             "email": "slack@demo.com",
-            "image": company_icon,
+            "image": assets.company_icon,
         },
         description: `
         <p>As a Software Tester, you will play a critical role in ensuring the quality and reliability of our software applications. You will design test cases, execute tests, and collaborate with development teams to identify and resolve defects before product release.</p>
@@ -857,7 +823,7 @@ export const jobsData = [
             "_id": "670e4d25ca9fda8f1bf359b9",
             "name": "Slack",
             "email": "slack@demo.com",
-            "image": company_icon,
+            "image": assets.company_icon,
         },
         description: `
         <p>We are seeking a Network Security Engineer to protect our organization's IT infrastructure. You will design and implement security measures to safeguard systems from unauthorized access and ensure compliance with security policies.</p>
@@ -890,7 +856,7 @@ export const jobsData = [
             "_id": "670e4d25ca9fda8f1bf359b9",
             "name": "Slack",
             "email": "slack@demo.com",
-            "image": company_icon,
+            "image": assets.company_icon,
         },
         description: `
         <p>Join our technology team as a Cloud Engineer, where you will be responsible for designing and managing our cloud infrastructure. You will collaborate with development and operations teams to ensure the efficient deployment and scaling of applications.</p>
