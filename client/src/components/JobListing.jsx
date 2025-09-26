@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { AppContext } from '../context/AppContext'
 import JobCard from './JobCard'
 import { IoClose } from "react-icons/io5";
@@ -26,13 +26,47 @@ const JobListing = () => {
     ]
 
     // Get jobs and search filter state from context
-    const { isSearched, searchFilter, setSearchFilter, jobs } = useContext(AppContext)
+    const { isSearched, setIsSearched, searchFilter, setSearchFilter, jobs } = useContext(AppContext)
 
     // Sidebar toggle for mobile
     const [showFilters, setShowFilters] = useState(false)
 
     // For Pagination
     const [currentPage, setCurrentPage] = useState(1);
+
+    // Applying filters to jobs
+    const [selectedCategories, setSelectedCategories] = useState([]);
+    const [selectedLocations, setSelectedLocations] = useState([]);
+    const [filteredJobs, setFilteredJobs] = useState(jobs);
+
+    // Filter jobs based on selected categories
+    const handleCategoryChange = (category) => {
+        setSelectedCategories(
+            prev => prev.includes(category) ? prev.filter(c => c !== category) : [...prev, category]
+        )
+    }
+
+    // Filter jobs based on selected locations
+    const handleLocationChange = (location) => {
+        setSelectedLocations(
+            prev => prev.includes(location) ? prev.filter(l => l !== location) : [...prev, location]
+        )
+    }
+
+    // Update filtered jobs whenever filters or search change
+    useEffect(() => {
+        const matchesCategory = job => selectedCategories.length === 0 || selectedCategories.includes(job.category);
+        const matchesLocation = job => selectedLocations.length === 0 || selectedLocations.includes(job.location);
+        const matchesTitle = job => !searchFilter.title || job.title.toLowerCase().includes(searchFilter.title.toLowerCase());
+        const matchesLocationFilter = job => !searchFilter.location || job.location.toLowerCase().includes(searchFilter.location.toLowerCase());
+
+        const newFilteredJobs = jobs.slice().reverse().filter(
+            job => matchesCategory(job) && matchesLocation(job) && matchesTitle(job) && matchesLocationFilter(job)
+        )
+
+        setFilteredJobs(newFilteredJobs);
+        setCurrentPage(1);
+    }, [selectedCategories, selectedLocations, searchFilter, jobs]);
 
     return (
         <div className="flex flex-col lg:flex-row gap-6 w-full px-4 md:px-8 lg:px-12">
@@ -56,13 +90,35 @@ const JobListing = () => {
                             {searchFilter.title && (
                                 <div className="flex justify-center items-center bg-sky-200 dark:bg-sky-700 p-2 rounded-lg gap-2">
                                     {searchFilter.title}
-                                    <IoClose onClick={() => { setSearchFilter(prev => ({ ...prev, title: "" })) }} className="cursor-pointer" width={20} />
+                                    <IoClose
+                                        onClick={() => {
+                                            // Clear title in context (this also clears the bound input in Hero)
+                                            setSearchFilter(prev => ({ ...prev, title: "" }));
+                                            // If both filters empty after clearing, mark as not searched
+                                            if (!searchFilter.location) {
+                                                setIsSearched(false);
+                                            }
+                                        }}
+                                        className="cursor-pointer"
+                                        width={20}
+                                    />
                                 </div>
                             )}
                             {searchFilter.location && (
                                 <div className="flex items-center justify-center bg-red-200 dark:bg-red-700 p-2 rounded-lg gap-2">
                                     {searchFilter.location}
-                                    <IoClose onClick={() => { setSearchFilter(prev => ({ ...prev, location: "" })) }} className="cursor-pointer" width={20} />
+                                    <IoClose
+                                        onClick={() => {
+                                            // Clear location in context (this also clears the bound input in Hero)
+                                            setSearchFilter(prev => ({ ...prev, location: "" }));
+                                            // If both filters empty after clearing, mark as not searched
+                                            if (!searchFilter.title) {
+                                                setIsSearched(false);
+                                            }
+                                        }}
+                                        className="cursor-pointer"
+                                        width={20}
+                                    />
                                 </div>
                             )}
                         </div>
@@ -76,7 +132,7 @@ const JobListing = () => {
                         <ul className="space-y-2">
                             {JobCategories.map((category, index) => (
                                 <li key={index} className="flex items-center">
-                                    <input type="checkbox" className="hover:cursor-pointer accent-sky-500" />
+                                    <input type="checkbox" className="hover:cursor-pointer accent-sky-500" onChange={() => handleCategoryChange(category)} checked={selectedCategories.includes(category)} />
                                     <span className="ml-2">{category}</span>
                                 </li>
                             ))}
@@ -88,7 +144,7 @@ const JobListing = () => {
                         <ul className="space-y-2">
                             {JobLocations.map((location, index) => (
                                 <li key={index} className="flex items-center">
-                                    <input type="checkbox" className="hover:cursor-pointer accent-red-500" />
+                                    <input type="checkbox" className="hover:cursor-pointer accent-red-500" onChange={() => handleLocationChange(location)} checked={selectedLocations.includes(location)} />
                                     <span className="ml-2">{location}</span>
                                 </li>
                             ))}
@@ -103,27 +159,27 @@ const JobListing = () => {
                 <p className="mb-4">Get your desired job from top companies</p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     {/* Fetching jobs from context */}
-                    {jobs.slice((currentPage-1)*6, currentPage*6).map((job, index) => (
+                    {filteredJobs.slice((currentPage-1)*6, currentPage*6).map((job, index) => (
                         <JobCard key={index} job={job} />
                     ))}
                 </div>
 
                 {/* Pagination Controls */}
-                {jobs.length > 0 && (
+                {filteredJobs.length > 0 && (
                     <div className='flex justify-center items-center gap-4 mt-6'>
                         <a href="#job-list">
                             <img src={assets.left_arrow_icon} alt="Left_Arrow_Icon" onClick={() => currentPage > 1 && setCurrentPage(currentPage - 1)} />
                         </a>
                         {/* Showing Page 1 of X with 6 cards only */}
                         {Array.from({
-                            length: Math.ceil(jobs.length / 6)
+                            length: Math.ceil(filteredJobs.length / 6)
                         }).map((_, index) => (
                             <a href="#job-list">
                                 <button  onClick={() => setCurrentPage(index + 1)} className={`border border-gray-300 rounded-md px-3 py-1 hover:bg-sky-500 hover:text-black ${currentPage === index + 1 ? 'bg-sky-300 text-black' : 'text-gray-500'}`}>{index + 1}</button>
                             </a>
                         ))}
                         <a href="#job-list">
-                            <img src={assets.right_arrow_icon} alt="Right_Arrow_Icon" onClick={() => currentPage < Math.ceil(jobs.length / 6) && setCurrentPage(currentPage + 1)} />
+                            <img src={assets.right_arrow_icon} alt="Right_Arrow_Icon" onClick={() => currentPage < Math.ceil(filteredJobs.length / 6) && setCurrentPage(currentPage + 1)} />
                         </a>
                     </div>
                 )}

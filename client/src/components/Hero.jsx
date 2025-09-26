@@ -51,16 +51,17 @@ const LazyImage = ({src, alt, className=''}) => {
 
 const Hero = () => {
 
-    const { setSearchFilter, setIsSearched} = useContext(AppContext)
+    const { searchFilter, setSearchFilter, setIsSearched} = useContext(AppContext)
 
     const titleRef =useRef(null);
     const locationRef =useRef(null);
 
     const onSearch = () => {
-        setSearchFilter({
-            title: titleRef.current.value,
-            location: locationRef.current.value
-        })
+        // If both fields empty, just mark as not searched
+        if(!searchFilter.title && !searchFilter.location){
+            setIsSearched(false);
+            return;
+        }
         setIsSearched(true);
     }
 
@@ -99,6 +100,8 @@ const Hero = () => {
                                 placeholder="Search for jobs"
                                 className="px-4 py-3 w-full text-gray-800 outline-none text-sm md:text-base"
                                 ref={titleRef}
+                                value={searchFilter.title}
+                                onChange={(e) => setSearchFilter(prev => ({ ...prev, title: e.target.value }))}
                             />
                         </div>
                         
@@ -110,6 +113,8 @@ const Hero = () => {
                                 placeholder="Location"
                                 className="w-full text-gray-800 outline-none text-sm md:text-base"
                                 ref={locationRef}
+                                value={searchFilter.location}
+                                onChange={(e) => setSearchFilter(prev => ({ ...prev, location: e.target.value }))}
                             />
                         </div>
                         
