@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react'
 import { AppContext } from '../context/AppContext'
 import JobCard from './JobCard'
 import { IoClose } from "react-icons/io5";
+import { assets } from '../data/assets';
 
 const JobListing = () => {
     const JobCategories = [
@@ -24,10 +25,14 @@ const JobListing = () => {
         "New York"
     ]
 
+    // Get jobs and search filter state from context
     const { isSearched, searchFilter, setSearchFilter, jobs } = useContext(AppContext)
 
     // Sidebar toggle for mobile
     const [showFilters, setShowFilters] = useState(false)
+
+    // For Pagination
+    const [currentPage, setCurrentPage] = useState(1);
 
     return (
         <div className="flex flex-col lg:flex-row gap-6 w-full px-4 md:px-8 lg:px-12">
@@ -94,14 +99,34 @@ const JobListing = () => {
 
             {/* Job Listings */}
             <section className="py-4 w-full lg:w-[75%]">
-                <h3 className="font-bold text-2xl mb-2 animate-pulse">Latest Jobs 🚀</h3>
+                <h3 className="font-bold text-2xl mb-2 animate-pulse" id='job-list'>Latest Jobs 🚀</h3>
                 <p className="mb-4">Get your desired job from top companies</p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     {/* Fetching jobs from context */}
-                    {jobs.map((job, index) => (
+                    {jobs.slice((currentPage-1)*6, currentPage*6).map((job, index) => (
                         <JobCard key={index} job={job} />
                     ))}
                 </div>
+
+                {/* Pagination Controls */}
+                {jobs.length > 0 && (
+                    <div className='flex justify-center items-center gap-4 mt-6'>
+                        <a href="#job-list">
+                            <img src={assets.left_arrow_icon} alt="Left_Arrow_Icon" onClick={() => currentPage > 1 && setCurrentPage(currentPage - 1)} />
+                        </a>
+                        {/* Showing Page 1 of X with 6 cards only */}
+                        {Array.from({
+                            length: Math.ceil(jobs.length / 6)
+                        }).map((_, index) => (
+                            <a href="#job-list">
+                                <button  onClick={() => setCurrentPage(index + 1)} className={`border border-gray-300 rounded-md px-3 py-1 hover:bg-sky-500 hover:text-black ${currentPage === index + 1 ? 'bg-sky-300 text-black' : 'text-gray-500'}`}>{index + 1}</button>
+                            </a>
+                        ))}
+                        <a href="#job-list">
+                            <img src={assets.right_arrow_icon} alt="Right_Arrow_Icon" onClick={() => currentPage < Math.ceil(jobs.length / 6) && setCurrentPage(currentPage + 1)} />
+                        </a>
+                    </div>
+                )}
             </section>
         </div>
     )
