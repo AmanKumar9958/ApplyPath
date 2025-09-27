@@ -1,6 +1,8 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const JobCard = ({ job }) => {
+    const navigate = useNavigate();
     return (
         <div className="shadow-lg border border-gray-200 dark:border-gray-700 rounded-2xl p-4 flex flex-col justify-between w-full transition-transform duration-200 hover:scale-[1.02]">
             {/* Header */}
@@ -31,10 +33,10 @@ const JobCard = ({ job }) => {
 
             {/* Actions */}
             <div className="flex gap-3 mt-2">
-                <button className="bg-red-500 text-white px-4 py-2 rounded-xl font-semibold hover:bg-red-600 transition-all duration-200 hover:scale-105 hover:cursor-pointer">
+                <button onClick={() => {navigate(`/apply-job/${job._id}`); scrollTo(0,0)}} className="bg-red-500 text-white px-4 py-2 rounded-xl font-semibold hover:bg-red-600 transition-all duration-200 hover:scale-105 hover:cursor-pointer">
                     Apply Now
                 </button>
-                <button className="bg-sky-500 text-white px-4 py-2 rounded-xl font-semibold hover:bg-sky-600 transition-all duration-200 hover:scale-105 hover:cursor-pointer">
+                <button onClick={() => {navigate(`/apply-job/${job._id}`); scrollTo(0,0)}} className="bg-sky-500 text-white px-4 py-2 rounded-xl font-semibold hover:bg-sky-600 transition-all duration-200 hover:scale-105 hover:cursor-pointer">
                     Learn More
                 </button>
             </div>
