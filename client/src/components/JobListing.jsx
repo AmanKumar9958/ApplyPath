@@ -174,7 +174,7 @@ const JobListing = () => {
                         {Array.from({
                             length: Math.ceil(filteredJobs.length / 6)
                         }).map((_, index) => (
-                            <a href="#job-list">
+                            <a key={index} href="#job-list">
                                 <button  onClick={() => setCurrentPage(index + 1)} className={`border border-gray-300 rounded-md px-3 py-1 hover:bg-sky-500 hover:text-black ${currentPage === index + 1 ? 'bg-sky-300 text-black' : 'text-gray-500'}`}>{index + 1}</button>
                             </a>
                         ))}
