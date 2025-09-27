@@ -3,6 +3,8 @@ import { Link, useParams } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
 import { assets } from '../data/assets';
 import { Share2, Bookmark, Mail, CalendarDays } from 'lucide-react';
+import moment from 'moment/moment';
+import JobCard from '../components/JobCard';
 
 const ApplyJob = () => {
     const { id } = useParams();
@@ -91,7 +93,7 @@ const ApplyJob = () => {
                                 </span>
                                 <span className="hover:cursor-default inline-flex items-center gap-1 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 px-2 py-1 rounded-md">
                                     <CalendarDays className="w-4 h-4" />
-                                    Posted {new Date(jobData.date).toLocaleDateString()}
+                                    Posted {moment(jobData.date).fromNow()}
                                 </span>
                             </div>
                         </div>
@@ -127,9 +129,9 @@ const ApplyJob = () => {
             {/* Content */}
             <div className="max-w-6xl mx-auto mt-6 grid grid-cols-1 lg:grid-cols-3 gap-6">
                 {/* Left: Job description */}
-                <div className="lg:col-span-2 bg-white dark:bg-gray-900 rounded-2xl shadow-md border border-gray-100 dark:border-gray-800 p-6 md:p-8">
+                <div className="lg:col-span-2 bg-white dark:bg-gray-900 rounded-2xl shadow-md border border-gray-100 dark:border-gray-800 p-6 md:p-8 flex flex-col gap-6">
                     <div className="flex items-center justify-between mb-4">
-                        <h2 className="text-xl font-bold text-gray-900 dark:text-white">Job Description</h2>
+                        <h2 className="text-xl font-bold text-gray-900 dark:text-white">Job description</h2>
                         {jobData.companyId?.email && (
                             <span className="inline-flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
                                 <Mail className="w-4 h-4" />
@@ -137,50 +139,23 @@ const ApplyJob = () => {
                             </span>
                         )}
                     </div>
-                    <div className="prose prose-sm md:prose-base dark:prose-invert max-w-none prose-headings:mt-4 prose-headings:mb-2 prose-p:leading-relaxed">
+                    <div className="prose prose-sm md:prose-base dark:prose-invert max-w-none prose-h2:text-gray-900 dark:prose-h2:text-white prose-h2:font-semibold prose-h2:tracking-tight prose-p:leading-relaxed prose-ol:list-decimal prose-ol:ml-5 prose-li:my-1">
                         {/* jobData.description contains HTML; render safely */}
                         <div dangerouslySetInnerHTML={{ __html: jobData.description }} />
                     </div>
+                    <div>
+                        <a href="#apply" className="px-5 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold hover:cursor-pointer shadow">Apply Now</a>
+                    </div>
                 </div>
 
-                {/* Right: Apply card */}
-                <aside className="bg-white dark:bg-gray-900 rounded-2xl shadow-md border border-gray-100 dark:border-gray-800 p-6 md:p-8 h-fit lg:sticky lg:top-24" id="apply">
-                    <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-3">Ready to apply?</h3>
-                    <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">Submit your application and we’ll get back to you soon.</p>
-                    <button className="w-full px-4 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold hover:cursor-pointer shadow">Apply Now</button>
-                    <div className="mt-6 border-t border-gray-100 dark:border-gray-800 pt-4">
-                        <h4 className="text-sm font-semibold text-gray-800 dark:text-gray-200 mb-2">Role Summary</h4>
-                        <ul className="text-sm text-gray-600 dark:text-gray-300 space-y-1">
-                            <li><strong>Level:</strong> {jobData.level}</li>
-                            <li><strong>Location:</strong> {jobData.location}</li>
-                            <li><strong>Salary:</strong> ₹ {new Intl.NumberFormat('en-IN').format(jobData.salary)}</li>
-                            <li><strong>Category:</strong> {jobData.category}</li>
-                        </ul>
-                    </div>
-                    <div className="mt-6 flex items-center gap-2">
-                        <div className="relative flex-1">
-                            <button
-                                type="button"
-                                className="w-full px-3 py-2 text-sm border border-gray-200 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 text-left"
-                                onClick={() => handleShare('sidebar')}
-                                title={shareStatus.sidebar === 'copied' ? 'Link copied!' : shareStatus.sidebar === 'shared' ? 'Shared!' : 'Share Link'}
-                            >
-                                Share Link
-                            </button>
-                            {shareStatus.sidebar && (
-                                <span className="absolute -top-7 right-2 text-xs px-2 py-1 rounded-md bg-gray-900 text-white dark:bg-white dark:text-gray-900 shadow">
-                                    {shareStatus.sidebar === 'copied' ? 'Link copied!' : shareStatus.sidebar === 'shared' ? 'Shared!' : 'Failed'}
-                                </span>
-                            )}
-                        </div>
-                        <button
-                            type="button"
-                            className="px-3 py-2 text-sm border border-gray-200 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800"
-                            title="Save job"
-                        >
-                            <Bookmark className="w-4 h-4" />
-                        </button>
-                    </div>
+                {/* Right: More Jobs from same company */}
+                <aside className="bg-white dark:bg-gray-900 rounded-2xl shadow-md border border-gray-100 dark:border-gray-800 p-6 md:p-8 h-fit lg:sticky lg:top-24 flex flex-col gap-2.5" id="apply">
+                    <h2 className='text-lg font-semibold text-gray-900 dark:text-white mb-2'>More Jobs from {jobData.companyId?.name}</h2>
+                    {
+                        jobs.filter(job => job._id !== jobData._id  && job.companyId._id === jobData.companyId._id)
+                        .filter(job => true).slice(0,4)
+                        .map((job, index) => <JobCard key={index} job={job} />)
+                    }
                 </aside>
             </div>
         </div>

@@ -7,6 +7,12 @@
 	font-family: Outfit, sans-serif;
 }
 
+@layer base{
+	html{
+		scroll-behavior: smooth;
+	}
+}
+
 /* ========= Reveal Animation Utilities ========= */
 @keyframes fade-up {
 	0% { opacity: 0; transform: translateY(28px) scale(.98); }
