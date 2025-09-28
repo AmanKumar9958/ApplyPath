@@ -1,14 +1,18 @@
 import { useClerk, UserButton, useUser } from '@clerk/clerk-react';
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { IoIosMenu, IoIosClose } from "react-icons/io";
 import ToggleIcon from './ToggleIcon';
+import { AppContext } from '../context/AppContext';
 
 const Navbar = () => {
     const { openSignIn } = useClerk();
     const { user } = useUser();
     const [menuOpen, setMenuOpen] = useState(false);
     const menuRef = useRef(null);
+
+    // For recruiter login/signup modal
+    const {setShowRecruiterLogin} = useContext(AppContext);
 
     // closing when clicking outside
     useEffect(() => {
@@ -79,7 +83,10 @@ const Navbar = () => {
                     </div>
                 ) : (
                     <div className="flex items-center gap-3">
-                        <button className="px-4 py-1.5 border-2 border-blue-500 rounded-full text-sm font-medium hover:bg-blue-500 hover:text-white transition">
+                        <button 
+                            className="px-4 py-1.5 border-2 border-blue-500 rounded-full text-sm font-medium hover:bg-blue-500 hover:text-white transition"
+                            onClick={() => setShowRecruiterLogin(true)}
+                        >
                             Recruiter Login
                         </button>
                         <button
@@ -94,7 +101,7 @@ const Navbar = () => {
             </div>
 
             {/* Mobile Menu */}
-            <div className={`bg-white dark:bg-gray-900 text-black dark:text-gray-200 md:hidden absolute left-0 right-0 top-16 bg-white border-t border-gray-200 shadow-md transform transition-transform duration-300 ${
+            <div className={`bg-white dark:bg-gray-900 text-black dark:text-gray-200 md:hidden absolute left-0 right-0 top-16 border-t border-gray-200 shadow-md transform transition-transform duration-300 ${
                 menuOpen ? "translate-y-0 opacity-100" : "-translate-y-5 opacity-0 pointer-events-none"
             }`}
             >
@@ -119,7 +126,10 @@ const Navbar = () => {
                     </div>
                 ) : (
                     <div className="flex flex-col items-center gap-3 py-4">
-                        <button className="px-4 py-1.5 border-2 border-blue-500 rounded-full text-sm font-medium hover:bg-blue-500 hover:text-white transition">
+                        <button 
+                            className="px-4 py-1.5 border-2 border-blue-500 rounded-full text-sm font-medium hover:bg-blue-500 hover:text-white transition"
+                            onClick={() => setShowRecruiterLogin(true)}
+                        >
                             Recruiter Login
                         </button>
                         <button
