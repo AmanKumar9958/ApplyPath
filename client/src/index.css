@@ -57,3 +57,56 @@
 @media (prefers-reduced-motion: reduce) {
 	.reveal, .reveal-show, .reveal-fade, .reveal-scale { animation: none !important; opacity: 1 !important; transform: none !important; }
 }
+
+/* Make Quill's toolbar and editor container match the theme */
+
+.quill-container .ql-toolbar {
+    border-top-left-radius: 0.5rem; /* 8px */
+    border-top-right-radius: 0.5rem; /* 8px */
+    border-color: #d1d5db; /* gray-300 */
+    border-bottom: 0px;
+}
+
+.quill-container .ql-container {
+    border-bottom-left-radius: 0.5rem; /* 8px */
+    border-bottom-right-radius: 0.5rem; /* 8px */
+    border-color: #d1d5db; /* gray-300 */
+    font-size: 1rem;
+    min-height: 150px;
+}
+
+.quill-container .ql-editor {
+    color: #111827; /* gray-900 */
+}
+
+/* Dark mode styles */
+.dark .quill-container .ql-toolbar {
+    border-color: #4b5563; /* gray-600 */
+    background-color: #1f2937; /* gray-800 */
+}
+
+.dark .quill-container .ql-container {
+    border-color: #4b5563; /* gray-600 */
+    background-color: #1f2937; /* gray-800 */
+}
+
+.dark .quill-container .ql-editor {
+    color: #f9fafb; /* gray-50 */
+}
+
+.dark .quill-container .ql-snow .ql-stroke {
+    stroke: #d1d5db; /* gray-300 */
+}
+.dark .quill-container .ql-snow .ql-picker-label {
+    color: #d1d5db;
+}
+
+/* Change placeholder color */
+.ql-editor.ql-blank::before{
+    color: #6b7280; /* gray-500 */
+    font-style: normal !important;
+}
+
+.dark .ql-editor.ql-blank::before{
+    color: #6b7280; /* gray-500 */
+}
