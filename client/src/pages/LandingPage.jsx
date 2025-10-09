@@ -153,7 +153,7 @@ const LandingPage = () => {
                             </p>
                             <div className="flex flex-wrap items-center gap-4">
                                 {/* <PrimaryButton>Explore Jobs</PrimaryButton> */}
-                                <Link to="/all-jobs" className='rounded-lg border border-border/60 bg-background/60'>
+                                <Link to="/all-jobs" className='rounded-lg border border-border/60 bg-background/60 text-black dark:text-white'>
                                     <PrimaryButton>Explore Jobs</PrimaryButton>
                                 </Link>
                             </div>
